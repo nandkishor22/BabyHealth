@@ -1,6 +1,6 @@
 # Baby Hospital Management System 🏥
 
-![Platform Screenshot](/image.png)
+![Platform Screenshot](https://raw.githubusercontent.com/nandkishor22/BabyHealth/refs/heads/main/public/Home.png)
 
 ## ✨ Features
 - 🌐 Responsive patient portal with appointment scheduling
