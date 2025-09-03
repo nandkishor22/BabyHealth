@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Baby Hospital Design System - Soft, welcoming medical aesthetic */
+
+@layer base {
+  :root {
+    /* Core Background System */
+    --background: 248 100% 98%;
+    --foreground: 218 84% 15%;
+
+    /* Medical Color Palette */
+    --medical-blue: 200 95% 60%;
+    --medical-blue-light: 200 100% 85%;
+    --baby-pink: 340 100% 85%;
+    --baby-pink-light: 340 100% 95%;
+    --mint-green: 150 60% 75%;
+    --warm-coral: 15 85% 70%;
+    --lavender: 260 60% 80%;
+
+    /* Semantic Colors */
+    --primary: 200 95% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 340 100% 85%;
+    --secondary-foreground: 218 84% 15%;
+    --accent: 150 60% 75%;
+    --accent-foreground: 218 84% 15%;
+
+    /* Card & Surface Colors */
+    --card: 0 0% 100%;
+    --card-soft: 340 100% 98%;
+    --card-foreground: 218 84% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 84% 15%;
+
+    /* Form Elements */
+    --muted: 340 60% 95%;
+    --muted-foreground: 218 40% 40%;
+    --border: 340 40% 90%;
+    --input: 340 40% 95%;
+    --ring: 200 95% 60%;
+
+    /* Medical UI Elements */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Gradients - Beautiful animated backgrounds */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--medical-blue)) 0%, hsl(var(--baby-pink)) 50%, hsl(var(--lavender)) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(var(--baby-pink-light)) 0%, hsl(var(--medical-blue-light)) 100%);
+    --gradient-accent: linear-gradient(45deg, hsl(var(--mint-green)) 0%, hsl(var(--warm-coral)) 100%);
+    --gradient-floating: radial-gradient(circle at 50% 50%, hsl(var(--baby-pink) / 0.3) 0%, transparent 70%);
+
+    /* 3D & Animation Properties */
+    --shadow-soft: 0 4px 20px hsl(var(--medical-blue) / 0.1);
+    --shadow-medical: 0 8px 32px hsl(var(--baby-pink) / 0.2);
+    --shadow-floating: 0 10px 40px hsl(var(--medical-blue) / 0.15);
+    --shadow-3d: 0 20px 60px hsl(var(--medical-blue) / 0.25);
+
+    /* Animation Timing */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --transition-medical: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 218 84% 8%;
+    --foreground: 248 100% 95%;
+    --card: 218 84% 12%;
+    --card-foreground: 248 100% 95%;
+    --popover: 218 84% 12%;
+    --popover-foreground: 248 100% 95%;
+    --primary: 200 95% 70%;
+    --primary-foreground: 218 84% 15%;
+    --secondary: 340 80% 25%;
+    --secondary-foreground: 248 100% 95%;
+    --muted: 218 40% 20%;
+    --muted-foreground: 248 60% 70%;
+    --accent: 150 60% 45%;
+    --accent-foreground: 248 100% 95%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 248 100% 95%;
+    --border: 218 40% 25%;
+    --input: 218 40% 20%;
+    --ring: 200 95% 70%;
+  }
+}
+
+/* Keyframe Animations for Medical UI */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(-5px) rotate(-1deg); }
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse3d {
+  0%, 100% { transform: scale(1) translateZ(0); }
+  50% { transform: scale(1.05) translateZ(10px); }
+}
+
+@keyframes medicalGlow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--medical-blue) / 0.3); }
+  50% { box-shadow: 0 0 40px hsl(var(--baby-pink) / 0.4), 0 0 60px hsl(var(--medical-blue) / 0.2); }
+}
+
+@keyframes floatingBubbles {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--gradient-soft);
+    background-size: 400% 400%;
+    animation: gradientMove 8s ease infinite;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Medical UI Component Styles */
+@layer components {
+  .floating-element {
+    animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(var(--shadow-floating));
+  }
+
+  .medical-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl;
+    box-shadow: var(--shadow-medical);
+    transition: var(--transition-medical);
+  }
+
+  .medical-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-3d);
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gradientMove 4s ease infinite;
+  }
+
+  .floating-bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--gradient-floating);
+    animation: floatingBubbles 15s linear infinite;
+    pointer-events: none;
+  }
+
+  .medical-glow {
+    animation: medicalGlow 3s ease-in-out infinite;
+  }
+
+  .btn-medical {
+    @apply relative overflow-hidden rounded-full px-8 py-4 font-semibold transition-all duration-300;
+    background: var(--gradient-primary);
+    transform-style: preserve-3d;
+  }
+
+  .btn-medical:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-3d);
+  }
+
+  .btn-medical:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
