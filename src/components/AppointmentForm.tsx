@@ -18,7 +18,7 @@ export const AppointmentForm = () => {
       const form = e.currentTarget;
       const formData = new FormData(form);
       
-      const response = await fetch('https://formsubmit.co/malinandkishor445@gmail.com', {
+      const response = await fetch('https://formsubmit.co/krutikakore8@gmail.com', {
         method: 'POST',
         body: formData
       });
